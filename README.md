@@ -66,13 +66,13 @@ Antes de poder correr la aplicación, necesitamos obtener el código fuente y de
         ├─ .dockerignore
     ```
 
+
 ### 2. Buildear imágen
 
 > [!TIP]
 > Consulte apuntes de <a href="https://docker.idepba.com.ar/clase3.html#/docker_build" target="_blank">docker build</a>.
 
 - Para buildear la imágen usaremos un `Dockerfile` como el siguiente. Observe y analice el archivo `Dockerfile`.
-- Cree un archivo llamado `Dockerfile` en la carpeta `app` con el siguiente contenido:
 
 
 
@@ -87,7 +87,7 @@ Antes de poder correr la aplicación, necesitamos obtener el código fuente y de
     WORKDIR /app
 
     # Copiamos los archivos del proyecto al contenedor
-    COPY . .
+    COPY ./app .
 
     # Instalamos las dependencias del proyecto
     RUN yarn install --production

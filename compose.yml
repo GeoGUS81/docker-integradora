@@ -1,0 +1,31 @@
+name: entregable
+services:
+    mysql:
+        container_name: mysql
+        image: mysql:8.0
+        volumes:
+            - data-entregable:/var/lib/mysql
+        environment:
+            MYSQL_USER: entregable
+            MYSQL_PASSWORD: entregable
+            MYSQL_ROOT_PASSWORD: entregable
+            MYSQL_DATABASE: todos
+
+    docker-integradora:
+        image: lepampeaux/docker-integradora
+        ports:
+            - 8080:3000
+        environment:
+            MYSQL_HOST: mysql
+            MYSQL_USER: entregable
+            MYSQL_PASSWORD: entregable
+            MYSQL_DB: todos
+        depends_on: 
+           - mysql
+        restart: always
+networks:
+    red-entregable:
+        name: red-entregable
+volumes:
+    data-entregable:
+        name: data-entregable
